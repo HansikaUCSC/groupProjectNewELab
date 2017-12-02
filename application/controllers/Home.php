@@ -34,8 +34,10 @@ class Home extends CI_Controller {
 
 	public function logged()
 	{
-        $this->load->view('header');
-	    $this->load->view('logged');
+        $this->load->view('nheader');
+        $this->load->view('calendar');
+
+        $this->load->view('logged');
 	}
 
 	public function admin_1()

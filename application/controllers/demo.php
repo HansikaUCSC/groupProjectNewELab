@@ -9,7 +9,9 @@
 class demo extends CI_Controller
 {
     function index(){
-        $this->load->view('header');
+        $this->load->view('nheader');
+        $this->load->view('calendar');
+
         $this->load->view('logged');
 
     }
