@@ -6,15 +6,9 @@
 	
 </head>
 	<body>
-		<nav>
-			<b>RACnRS</b>
-			<a href="#s1">HOME</a>
-			<a href="#ss1">ABOUT US</a>
-			<a href="#s2">PRODUCTS</a>
-			<a href="#ss2">CONTACT US</a>
-			<a class="user" href="#" ><?php echo $this->session->userdata('user_name'); ?></a>
-				
-		</nav>
+		
+
+
 		<div class="sect  sectOne" id="s1">
 			<br><br><br><br><br>
 			<div>
