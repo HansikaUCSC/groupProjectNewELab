@@ -4,7 +4,7 @@
 	<link rel="stylesheet" href=<?php echo base_url();?>css/style.css>
 		<div class="wrap">
 			<div class="logo">
-				<a href=<?php echo base_url(); ?>home><img src=<?php echo base_url();?>images/logonn.png alt=""/></a>
+				<a href=<?php echo base_url(); ?>home><img src=<?php echo base_url();?>images/logon.png alt=""/></a>
 			</div>
 			<div class="top-nav">
 				<div class="menu">
