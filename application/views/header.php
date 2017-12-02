@@ -11,7 +11,7 @@
 				<span class="menu"> </span>
 			   		<ul>
 						<li><a href=<?php echo base_url(); ?>home>Home</a></li>
-						<li class=""><a href=<?php echo base_url(); ?>about>Profile</a></li>
+						<li class=""><a href=<?php echo base_url(); ?>about>My Profile</a></li>
 						<li class=""><a href=<?php echo base_url(); ?>services>Take Me a Tour</a></li>
 						<li class=""><a href=<?php echo base_url(); ?>gallery>Our Products</a></li>
 						<li class=""><a href=<?php echo base_url(); ?>contact>Contact Us</a></li>
