@@ -12,7 +12,7 @@
 			<a href="#ss1">ABOUT US</a>
 			<a href="#s2">PRODUCTS</a>
 			<a href="#ss2">CONTACT US</a>
-			<a class="user" href="#" ><?php echo $this->session->userdata('user_name'); ?></a>
+			<a class="user" href="<?php echo base_url() ?>/index.php/Profile/get_profile" ><?php echo $this->session->userdata('user_name'); ?></a>
 				
 		</nav>
 		<div class="sect  sectOne" id="s1">
