@@ -3,6 +3,12 @@
 <head>
 	<title>RACnRS | Home</title>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>/assets/css/style.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>/assets/css/style4.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+	
 	
 </head>
 	<body>
@@ -17,11 +23,37 @@
 		</nav>
 		<div class="sect  sectOne" id="s1">
 			<br><br><br><br><br>
-			<div>
-        		<center>
-        			<iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=jt499m1v7f9gnac4eckj10s4ro%40group.calendar.google.com&amp;color=%235F6B02&amp;ctz=Asia%2FColombo" style="border-width:0" width="600" height="500" frameborder="0" scrolling="no"></iframe>
+			<div style="float: left;">
+			<center>
+        		<iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=jt499m1v7f9gnac4eckj10s4ro%40group.calendar.google.com&amp;color=%235F6B02&amp;ctz=Asia%2FColombo" style="border-width:0;" width="600" height="500" frameborder="0" scrolling="no"></iframe>
         		</center>
     		</div>
+    		<div class="fm_header">
+    		<h2>Reservation</h2>
+    			<form class="fm_reserve" action="#">
+    				<div class="fm_date">
+    					<label class="lb_date" for="date">Date:</label>
+    					<input type="date" class="in_date" id="i_date"  name="date">
+    				</div>
+    				<div>
+    					<label class="lb_time" for="time">Time:</label>
+    					<select id="inputTime" class="form-control">
+        					<option selected>Choose Time</option>
+        					<option>8.00 am - 9.00 am</option>
+        					<option>9.00 am - 10.00 am</option>
+        					<option>10.00 am - 11.00 am</option>
+        					<option>11.00 am - 12.00 pm</option>
+        					<option>12.00 pm - 1.00 pm</option>
+        					<option>1.00 pm - 2.00 pm</option>
+        					<option>2.00 pm - 3.00 pm</option>
+        					<option>3.00 pm - 4.00 pm</option>
+        					<option>4.00 pm - 5.00 pm</option>
+        					<option>5.00 pm - 6.00 pm</option>
+        					<option>6.00 pm - 7.00 pm</option>
+      					</select>
+    				</div>
+    			</form>
+			</div>
 		</div>
 		<div class="subSection" id="ss1">
 			<br><br>
@@ -33,7 +65,7 @@
 		</div>
 		<div class="sect sectTwo" id="s2">
 
-			<img src="<?php base_url() ?>/assets/images/1.JPG">
+			<img class="image" src="<?php echo base_url() ?>/assets/images/1.JPG">
 		</div>
 		<div class="subSection" id="ss2">
 		<br><center>

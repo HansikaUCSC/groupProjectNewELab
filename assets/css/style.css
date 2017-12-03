@@ -43,7 +43,9 @@ nav b {
 
 .subSection {
 	height: 50%;
-	background-color: #faebd7;
+	background-image: url("../images/img11.jpg");
+	background-size: cover;
+	font-color: white;
 }
 
 .sectOne {
@@ -56,6 +58,11 @@ nav b {
 
 .sectThree {
 	background-image: url("../images/img4.jpg");
+}
+
+.image {
+	margin-top: 50px;
+	margin-left: 50px;
 }
 
 
