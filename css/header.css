@@ -3,6 +3,13 @@
 
 }
 
+.navbar-inverse .navbar-nav > li > a:hover {
+
+    color: #000;
+    background-color:transparent;
+
+}
+
 .navi .nav >li >a {
     padding-left: 25px;
     padding-right: 25px;
