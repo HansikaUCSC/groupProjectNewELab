@@ -35,7 +35,7 @@ class Home extends CI_Controller {
 	public function logged()
 	{
         $this->load->view('nheader');
-        $this->load->view('calendar');
+        $this->load->view('tempCal');
 
         $this->load->view('logged');
 	}
