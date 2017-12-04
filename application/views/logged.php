@@ -3,13 +3,12 @@
 <head>
 	<title>RACnRS | Home</title>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>/assets/css/style.css">
-	
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>/assets/css/style4.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 	<body>
-
-
-
-
 		<div class="subSection" id="ss1">
 			<br><br>
 			<h3><u>About Us</u></h3>
@@ -20,7 +19,7 @@
 		</div>
 		<div class="sect sectTwo" id="s2">
 
-			<img src="<?php base_url() ?>/assets/images/1.JPG">
+			<img src="<?php echo base_url() ?>/assets/images/1.JPG">
 		</div>
 		<div class="subSection" id="ss2">
 		<br><center>
