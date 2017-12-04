@@ -27,7 +27,7 @@
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
-            <li class=""><a href=<?php echo base_url(); ?>about><?php echo $this->session->userdata('user_name'); ?></a></li>
+            <li class=""><a href="<?php echo base_url(); ?>/index.php/Upload/index"><?php echo $this->session->userdata('user_name'); ?></a></li>
             <li class=""><a href="#"><span class="glyphicon glyphicon-log-out"></span></a></li>
 
         </ul>
