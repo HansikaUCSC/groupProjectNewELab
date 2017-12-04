@@ -2,16 +2,11 @@
 
 class Upload extends CI_Controller {
 
-        public function __construct()
-        {
-                parent::__construct();
-                $this->load->helper(array('form', 'url'));
-        }
-
+ 
         public function index()
         {
                 $error="";
-                $this->load->view('upload_form', $error);
+                $this->load->view('cimage', $error);
         }
 
         public function do_upload()
