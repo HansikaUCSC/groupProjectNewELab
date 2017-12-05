@@ -169,18 +169,19 @@
             <iframe src="https://calendar.google.com/calendar/embed?title=UCSC%20E-LAB&amp;showPrint=0&amp;height=500&amp;wkst=2&amp;bgcolor=%2333ccff&amp;src=nctrdb3d8fmos0g7t39tdvk4a8%40group.calendar.google.com&amp;color=%238D6F47&amp;ctz=Asia%2FColombo" style="border-width:0" width="500" height="500" frameborder="0" scrolling="no"></iframe>
         </div>
     <div class="col-lg-5" id="form" style="background-color: #e6ebff; float: right; margin-right: 50px;margin-top: 20px">
-        <form class="form-horizontal" style="margin-top: 10px;">
+        <?php echo validation_errors(); ?>
+        <form method="POST" action="<?php echo base_url(); ?>index.php/calendar/BkCalendar" class="form-horizontal" style="margin-top: 10px">
             <div class="form-group">
                 <label class="control-label col-sm-2" for="date">Date:</label>
                 <div class="col-sm-10">
-                    <input type="date" class="form-control" id="date">
+                    <input type="date" class="form-control" id="date" name="date" required>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="time">Start Time:</label>
                 <div class="col-sm-10">
-                    <select class="form-control" id="#">
-                        <option selected>Choose Start Time</option>
+                    <select class="form-control" id="#" name="starttime">
+                        <option selected type="hidden" disabled>Choose Start Time</option>
                         <option >8.00 am</option>
                         <option >9.00 am</option>
                         <option >10.00 am</option>
@@ -200,8 +201,8 @@
             <div class="form-group">
                 <label class="control-label col-sm-2" for="time">End Time:</label>
                 <div class="col-sm-10">
-                    <select class="form-control" id="#">
-                        <option selected>Choose End Time</option>
+                    <select class="form-control" id="#" name="endtime">
+                        <option selected type="hidden" disabled >Choose End Time</option>
                         <option >9.00 am</option>
                         <option >10.00 am</option>
                         <option >11.00 am</option>
@@ -219,15 +220,15 @@
             <div class="form-group">
                 <label class="control-label col-sm-2">Purpose</label>
                 <div>
-                    <label class="radio-inline"><input type="radio" name="optradio">Lecture</label>
-                    <label class="radio-inline"><input type="radio" name="optradio">Meeting</label>
-                    <label class="radio-inline"><input type="radio" name="optradio">Practical Session</label>
+                    <label class="radio-inline"><input type="radio" name="optradio" value="lecture">Lecture</label>
+                    <label class="radio-inline"><input type="radio" name="optradio"  value="meeting">Meeting</label>
+                    <label class="radio-inline"><input type="radio" name="optradio"  value="practical">Practical Session</label>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="comment">Description:</label>
                 <div class="col-sm-10">
-                    <textarea class="form-control" rows="5" id="comment" placeholder="Write small descrition about your booking"></textarea>
+                    <textarea class="form-control" rows="5" id="comment" placeholder="Write small descrition about your booking" required name="comment"></textarea>
                 </div>
             </div>
             <div class="form-group">

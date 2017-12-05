@@ -11,4 +11,20 @@ class Calendar extends CI_Controller
     function index(){
         $this->load->view('tempCal');
     }
+
+    public function BkCalendar(){
+
+        $Date = $_POST['date'];
+        $STime = $_POST['starttime'];
+        $ETime = $_POST['endtime'];
+        $Purpose = $_POST['optradio'];
+        $Description = $_POST['comment'];
+
+        $this->load->model('Model_user');
+        $response = $this->Model_user->ReserveData();
+
+       // $this->session->userdata('user_id');
+
+    }
+
 }

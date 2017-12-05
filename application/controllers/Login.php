@@ -18,8 +18,8 @@
 
 				if ($result != false) {
 					$user_data = array(
-						'user_id' =>$result->Id ,
-						'user_name' =>$result->username ,
+						'user_id' =>$result->user_id ,
+						'user_name' =>$result->fName ,
 						'loggedin' => TRUE
 					);
 
