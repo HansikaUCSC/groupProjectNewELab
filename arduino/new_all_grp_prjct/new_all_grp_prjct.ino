@@ -30,16 +30,17 @@ LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
 
 #include <SPI.h>
 #include <Ethernet.h>
-IPAddress server(192,168,8,101); 
+IPAddress server(192,168,8,100); 
 IPAddress ip(192, 168, 8, 130);
 EthernetClient client;
 EthernetClient client1;
 int regFlag=0;
 void PuresendDB(String rfiD,int accesS);
-void selectDB(String rfiD,int accesS);
+bool selectDB(String rfiD,int accesS);
 void insertDB(String rfiD,int accesS);
+void selectSche(String date,int ttime);
 byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
-char ary[20];
+char ary[200];
 String Stime="";
 String Etime="";
 String Type="";
@@ -243,9 +244,9 @@ void lcd_ClearRFIDLastLine(){
 
   
 //RFID###########################################################################################################################################
-bool identify_super(String serial){
+bool identify_super(String serial){ /*identify whether the card is super card or not*/
   lcd.setCursor(0, 1);
-  if  (serial == "94224135171146"){
+  if  (serial == "94224135171146"){ /*check eq to super card serial num*/
     lcd.print("Super Detected");
     digitalWrite(led,HIGH);
     delay(1000);
@@ -261,25 +262,25 @@ bool identify_super(String serial){
 }
 
 
-bool identify_user(String serial){
+bool identify_user(String serial){ /*check on array whether that serial is in or not.if its in access granted. return 'True'*/
     bool flag = false;
     for (int i=0;i<10;i++){
         if(users[i] == serial){
             flag = true;
           }
       }
-    return flag;
-  }
+    return flag; /*return True for registered users*/
+  }/*must convert to db check*/
 
 
-void call_RFID(){
+void call_RFID(){ /*main function*/
   lcd_ClearRFID();
   lcd.setCursor(0, 0);
-  if (RC522.isCard())
+  if (RC522.isCard()) /*check whether there is a card hovered*/
   {
     /* If so then get its serial number */
-    RC522.readCardSerial();
-    lcd_ClearRFIDLastLine();
+    RC522.readCardSerial(); /*read the serial number of the card */
+    lcd_ClearRFIDLastLine();/*clear display last line*/
     lcd.print("Card Detected");
     digitalWrite(led,HIGH);
     delay(500);
@@ -287,13 +288,13 @@ void call_RFID(){
     
     
     delay(1000);
-    String serial = String(RC522.serNum[0]);
+    String serial = String(RC522.serNum[0]); /*concat and made the real serial number*/
     for(int i=1;i<5;i++)
     {
       serial.concat(String(RC522.serNum[i]));
       //Serial.println(serial);
     }
-    if (identify_user(serial)){
+    if ((selectDB(serial,1))&&!(identify_super(serial))){ /*check whether card is registered*/
       lcd_ClearRFIDLastLine();
       lcd.setCursor(0, 1);
       
@@ -309,8 +310,8 @@ void call_RFID(){
         delay(1000);
         //Serial.println(serial);
       }
-    else if (identify_super(serial)){
-      delay(4000);
+    else if (identify_super(serial)){ /*if not check whether the card is a super card*/
+      delay(4000); /*delay for hoverign new card for registerinh*/
         if (RC522.isCard()){
           RC522.readCardSerial();
           
@@ -319,7 +320,7 @@ void call_RFID(){
           for(int i=1;i<5;i++){
             serial1.concat(String(RC522.serNum[i]));
           }
-          if (identify_user(serial1)){
+          if (selectDB(serial1,1)){/*check whether that card is registered*/
             lcd_ClearRFIDLastLine();
             lcd.setCursor(0, 1);
             
@@ -333,14 +334,16 @@ void call_RFID(){
               lcd.print("ON");
               delay(1000);
             }
-          else{
-            users[count] = serial1;
+          else{/*if not register the card*/
+            users[count] = serial1;/*insert that serial to array*/ /*this must convert to only db insert*/
             count++;
             lcd_ClearRFIDLastLine();
              lcd.setCursor(0, 1);
              
             
-            sendDB(serial1,1);
+            sendDB(serial1,1); /*update the db*/
+            Serial.print("RFID serial");
+            Serial.println(serial1);
             if(regFlag==1){
               lcd.print("Already Registered    ");
               }
@@ -359,7 +362,7 @@ void call_RFID(){
         }
       }
     else{
-      lcd_ClearRFIDLastLine();
+      lcd_ClearRFIDLastLine();/*otherwise access denied */
       lcd.setCursor(0, 1);
         lcd.print("Access Denied     ");
 
@@ -619,7 +622,9 @@ String joystick(int x,int y,int sw){
   }
 
 //ethernetshield##############################################################################
-void selectDB(String rfiD,int accesS){
+bool selectDB(String rfiD,int accesS){
+  bool flag;
+  flag=false;
   regFlag=0;
    if (client.connect(server, 80)) {
     Serial.println("connected");
@@ -636,20 +641,39 @@ void selectDB(String rfiD,int accesS){
   } else {
     Serial.println("connection failed select db");
   }
-
+  
+  while(client.connected() && !client.available()) delay(1); //waits for data
+ while (client.connected() || client.available()) { //connected or data available
+   char c = client.read(); //gets byte from ethernet buffer
+   Serial.print(c); //prints byte to serial monitor
+   if(c=='%'){
+      Serial.print("found");
+      regFlag=1;
+      flag=true;
+      client.stop();
+      }
+    
+ }
+ /*
+  if(client.available()){
+    Serial.println("client ok");
+    }
   while (client.available()) {
+    Serial.println("while");
     char c = client.read();
     Serial.print(c);
     if(c=='%'){
       Serial.print("found");
       regFlag=1;
+      flag=true;
       client.stop();
       }
       
-  }
+  }*/
+  Serial.println("loop done");
   delay(1000);
   client.stop();
-  
+  return flag;
   }
 
 
@@ -707,9 +731,10 @@ void selectSche(String date,int ttime){
   Type="";
   int i;
   i=0;
+  int lenn;
    if (client.connect(server, 80)) {
     Serial.println("connected");
-    client.print("GET /select.php?date=");
+    client.print("GET /sche.php?date=");
     client.print(date);
     client.print("&time=");
     client.print(ttime);
@@ -722,21 +747,33 @@ void selectSche(String date,int ttime){
   } else {
     Serial.println("connection failed select db");
   }
-
-  while (client.available()) {
+  Serial.print("excuted");
+  
+ while(client.connected() && !client.available()){
+  delay(1);
+  } //waits for data
+  Serial.println("waiting for data");
+  
+ while (client.connected() || client.available()) { //connected or data available
     char c = client.read();
     Serial.print(c);
     ary[i]=c;
     i++;
+    //lenn=sizeof(ary)/sizeof(ary[0]);
+    if(c=='\0'){
+      Serial.println("client stopping");
+      //client.stop();
+      break;
+      }
     /*
     if(c=='%'){
       Serial.print("found");
       regFlag=1;
       client.stop();
       }*/
-      
+      delay(50);
   }
-
+  Serial.print("loop done");
   
   for(int k=0;k<2;k++){
     Stime.concat(ary[k]);
@@ -757,7 +794,8 @@ void selectSche(String date,int ttime){
   
   delay(1000);
   client.stop();
-  
+
+  Serial.print(Type);
   }
 
 
@@ -814,12 +852,16 @@ void setup() {
     }
     }
     }
-  else if (EthInput==1){
+  else{
+    while(true){
     //retrieve from db
-    //selectSche("2017-10-10",10);
-    bookedSession("Tue 08:00-10:00","13:00","15:00","17:00","Lecture","15");
-    //bookedSession("Tue 08:00-10:00","13:00",Stime,Etime,Type,"15");
-    }  
+    selectSche("2017-12-08",5);
+    delay(5000);
+    //bookedSession("Tue 08:00-10:00","13:00","15:00","17:00","Lecture","15");
+    bookedSession("Tue 08:00-10:00","13:00",Stime,Etime,Type,"15");
+    delay(60000);
+    }
+  }  
 
 }
 
