@@ -4,9 +4,12 @@
 	<title>RACnRS | Home</title>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>/assets/css/style.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>/assets/css/style4.css">
+
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+	
 	
 	
 	
@@ -26,35 +29,82 @@
 			<div style="float: left;">
 			<center>
         		<iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=jt499m1v7f9gnac4eckj10s4ro%40group.calendar.google.com&amp;color=%235F6B02&amp;ctz=Asia%2FColombo" style="border-width:0;" width="600" height="500" frameborder="0" scrolling="no"></iframe>
-        		</center>
+        	</center>
     		</div>
-    		<div class="fm_header">
-    		<h2>Reservation</h2>
-    			<form class="fm_reserve" action="#">
-    				<div class="fm_date">
-    					<label class="lb_date" for="date">Date:</label>
-    					<input type="date" class="in_date" id="i_date"  name="date">
-    				</div>
-    				<div>
-    					<label class="lb_time" for="time">Time:</label>
-    					<select id="inputTime" class="form-control">
-        					<option selected>Choose Time</option>
-        					<option>8.00 am - 9.00 am</option>
-        					<option>9.00 am - 10.00 am</option>
-        					<option>10.00 am - 11.00 am</option>
-        					<option>11.00 am - 12.00 pm</option>
-        					<option>12.00 pm - 1.00 pm</option>
-        					<option>1.00 pm - 2.00 pm</option>
-        					<option>2.00 pm - 3.00 pm</option>
-        					<option>3.00 pm - 4.00 pm</option>
-        					<option>4.00 pm - 5.00 pm</option>
-        					<option>5.00 pm - 6.00 pm</option>
-        					<option>6.00 pm - 7.00 pm</option>
-      					</select>
-    				</div>
-    			</form>
-			</div>
-		</div>
+
+    		<div class="col-lg-5" id="form" style="background-color: #e6ebff; float: right; margin-right: 50px;">
+    		<?php echo validation_errors(); ?>
+    		<?php echo form_open('calendar/BkCalendar', 'class=form-horizontal','style="margin-top: 10px;"'); ?>
+    			
+  					<div class="form-group">
+    					<label class="control-label col-sm-2" for="date">Date:</label>
+    					<div class="col-sm-10">
+      						<input type="date" class="form-control" id="date" name="date" required>
+    					</div>
+  					</div>
+  					<div class="form-group">
+    					<label class="control-label col-sm-2" for="time">Start Time:</label>
+    					<div class="col-sm-10"> 
+      						<select class="form-control" id="#" name="starttime" required>
+      							<option selected>Choose Start Time</option>
+      							<option >8.00 am</option>
+      							<option >9.00 am</option>
+      							<option >10.00 am</option>
+      							<option >11.00 am</option>
+      							<option >12.00 pm</option>
+      							<option >1.00 pm</option>
+      							<option >2.00 pm</option>
+      							<option >3.00 pm</option>
+      							<option >4.00 pm</option>
+      							<option >5.00 pm</option>
+      							<option >6.00 pm</option>
+      							<option >7.00 pm</option>
+      						</select> 
+    					</div>
+  					</div>
+  					
+  					<div class="form-group">
+    					<label class="control-label col-sm-2" for="time">End Time:</label>
+    					<div class="col-sm-10"> 
+      						<select class="form-control" id="#" name="endtime" required>
+      							<option selected>Choose End Time</option>
+      							<option >9.00 am</option>
+      							<option >10.00 am</option>
+      							<option >11.00 am</option>
+      							<option >12.00 pm</option>
+      							<option >1.00 pm</option>
+      							<option >2.00 pm</option>
+      							<option >3.00 pm</option>
+      							<option >4.00 pm</option>
+      							<option >5.00 pm</option>
+      							<option >6.00 pm</option>
+      							<option >7.00 pm</option>
+      						</select> 
+    					</div>
+  					</div>
+  					<div class="form-group">
+  						<label class="control-label col-sm-2">Purpose</label>
+  						<div>
+  							<label class="radio-inline"><input type="radio" name="optradio">Lecture</label>
+							<label class="radio-inline"><input type="radio" name="optradio">Meeting</label>
+							<label class="radio-inline"><input type="radio" name="optradio">Practical Session</label>
+						</div>
+  					</div>
+  					<div class="form-group">
+  						<label class="control-label col-sm-2" for="comment">Description:</label>
+  						<div class="col-sm-10"> 
+  							<textarea class="form-control" rows="5" id="comment" placeholder="Write small descrition about your booking" name="comment"></textarea>
+  						</div>
+					</div>
+  					<div class="form-group"> 
+    					<div class="col-sm-offset-2 col-sm-10">
+      						<button type="submit" class="btn btn-default">Confirm Booking</button>
+    					</div>
+  					</div>
+				
+				<?php echo form_close(''); ?>
+    		</div>
+    	</div>
 		<div class="subSection" id="ss1">
 			<br><br>
 			<h3><u>About Us</u></h3>
@@ -66,6 +116,8 @@
 		<div class="sect sectTwo" id="s2">
 
 			<img class="image" src="<?php echo base_url() ?>/assets/images/1.JPG">
+			<p style="color: white;">adgdgeeeeeeeee nm,m,</p>
+			<button type="submit" class="btn btn-default">Read More</button>
 		</div>
 		<div class="subSection" id="ss2">
 		<br><center>
@@ -75,6 +127,10 @@
 			<p><b>Tel :</b> +94 -11- 2581245/ 7</p>
 			<p><b>Fax :</b> +94-11-2587239</p>
 			</center>
+		</div>
+		<div class="sect sectThree" id="s3">
+
+			
 		</div>
 	</body>
 </html>

@@ -35,6 +35,21 @@ class Model_user extends CI_Model
 			return false;
 		}
 	}
+
+	function ReserveData()
+	{
+		$data = array(
+			'username' => $this->input->post('username','TRUE') , 
+			'email' => $this->input->post('email','TRUE') ,
+			'nic' => $this->input->post('nic','TRUE') ,
+			'contact' => $this->input->post('contact','TRUE') ,
+			'usertype' => $this->input->post('usertype','TRUE') ,
+			'password' => sha1($this->input->post('password','TRUE')) ,
+			);
+		
+		return $this->db->insert('user_reg',$data);
+	}
+
 }
 
 ?>
