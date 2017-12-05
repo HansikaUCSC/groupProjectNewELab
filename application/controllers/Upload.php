@@ -2,9 +2,18 @@
 
 class Upload extends CI_Controller {
 
+        public function load_update(){
+                $this->load->view('profile');
+        }
+       /* public function update(){
+               $this->load->model('Model_profile'),
+               $this->Model_profile->update_data($this->session->userdata('user _name')); 
+        }*/
+
  
         public function index()
         {
+                //$this->load->view('nheader');
                 $this->load->view('cimage');
         }
 
@@ -29,10 +38,16 @@ class Upload extends CI_Controller {
                 {
                         $data = array('upload_data' => $this->upload->data());
                        // $this->load->view('upload_success', $data);
+                        // get the parth of the image detail are return as array of array
                         $image_path=base_url("uploads/".$data['upload_data']['raw_name'].$data['upload_data']['file_ext']);
-                        $arr['imagepath']= $image_path;
-                
+                        $arr['image']= $image_path;
+                        unset($data['submit']);
+                        $this->load->model('Model_profile');
+                       // $this->Model_profile->getid( $this->session->userdata('user_name'));
+                        $this->Model_profile->upload_image($arr, $this->session->userdata('user _name'));
                 }
+                //$this->load->view('nheader');
+                $this->load->view('cimage');
         }
 }
 ?>

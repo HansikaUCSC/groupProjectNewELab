@@ -10,8 +10,8 @@
 
 <ul>
   <li><a class="active" href="<?php echo base_url() ?>/index.php/Home/logged ">Home</a></li>
-  <li><a href="<?php echo base_url()?>/index.php/Profile/update">Update Details</a></li>
+  <li><a href="<?php echo base_url()?>/index.php/Upload/load_update">Update Details</a></li>
   <li><a href="#">Security</a></li>
-  <li><a href="<?php echo base_url()?>/index.php/Profile/change_image">Change Image</a></li>
+  <li><a href="<?php echo base_url(); ?>/index.php/Upload/index">Change Image</a></li>
 </ul>
 <div  class="right">
