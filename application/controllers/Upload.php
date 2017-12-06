@@ -50,6 +50,7 @@ class Upload extends CI_Controller {
                 else
                 {
                         $data = array('upload_data' => $this->upload->data());
+                        var_dump($data);
                        // $this->load->view('upload_success', $data);
                         // get the parth of the image detail are return as array of array
                         $image_path=base_url("uploads/".$data['upload_data']['raw_name'].$data['upload_data']['file_ext']);
@@ -60,7 +61,7 @@ class Upload extends CI_Controller {
                         $this->Model_profile->upload_image($arr, $this->session->userdata('user_name'));
                 }
                 //$this->load->view('nheader');
-                $this->load->view('cimage');
+               // $this->load->view('cimage');
         }
 }
 ?>

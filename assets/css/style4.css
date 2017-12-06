@@ -37,4 +37,9 @@ li a:hover:not(.active) {
     position: fixed;
 }
 
+.control-label{
+    padding-left: unset;
+    padding-top: 5px;
+}
+
            

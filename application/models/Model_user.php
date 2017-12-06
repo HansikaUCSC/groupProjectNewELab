@@ -2,7 +2,7 @@
 
 class Model_user extends CI_Model
 {
-	
+	//admin insertion
 	function InsertUserData()
 	{
 		$data = array(
@@ -14,8 +14,10 @@ class Model_user extends CI_Model
 			'password' => sha1($this->input->post('password','TRUE')) ,
 			);
 		
-		return $this->db->insert('user_reg',$data);
+		return $this->db->insert('regUser',$data);
 	}
+
+
 
 	function LoginUser()
 	{
@@ -35,6 +37,20 @@ class Model_user extends CI_Model
 			return false;
 		}
 	}
+    function ReserveData()
+    {
+        $data = array(
+            'scheDate' => $this->input->post('date', 'TRUE'),
+            'startTime' => $this->input->post('starttime', 'TRUE'),
+            'endTime' => $this->input->post('endtime', 'TRUE'),
+            'scheType' => $this->input->post('optradio', 'TRUE'),
+            'scheDiscription' => $this->input->post('comment', 'TRUE'),
+            'user_id'=>$this->session->userdata('user_id')
+
+        );
+
+        return $this->db->insert('schedule', $data);
+    }
 }
 
 ?>

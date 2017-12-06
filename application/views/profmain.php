@@ -13,4 +13,5 @@
   <li><a href="<?php echo base_url()?>/index.php/Upload/load_security">Security</a></li>
   <li><a href="<?php echo base_url()?>/index.php/Upload/index">Change Image</a></li>
 </ul>
+
 <div  class="right">
