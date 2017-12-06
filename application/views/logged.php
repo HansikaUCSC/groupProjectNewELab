@@ -33,9 +33,8 @@
     		</div>
 
     		<div class="col-lg-5" id="form" style="background-color: #e6ebff; float: right; margin-right: 50px;">
-    		<?php echo validation_errors(); ?>
-    		<?php echo form_open('calendar/BkCalendar', 'class=form-horizontal','style="margin-top: 10px;"'); ?>
-    			
+    		
+    			<form class="form-horizontal" style="margin-top: 10px;" action="calendar/BkCalendar" ></form>
   					<div class="form-group">
     					<label class="control-label col-sm-2" for="date">Date:</label>
     					<div class="col-sm-10">
@@ -45,8 +44,8 @@
   					<div class="form-group">
     					<label class="control-label col-sm-2" for="time">Start Time:</label>
     					<div class="col-sm-10"> 
-      						<select class="form-control" id="#" name="starttime" required>
-      							<option selected>Choose Start Time</option>
+      						<select class="form-control" id="#" name="starttime">
+      							<option selected="selected" type="hidden" disabled="disabled">Choose Start Time</option>
       							<option >8.00 am</option>
       							<option >9.00 am</option>
       							<option >10.00 am</option>
@@ -67,7 +66,7 @@
     					<label class="control-label col-sm-2" for="time">End Time:</label>
     					<div class="col-sm-10"> 
       						<select class="form-control" id="#" name="endtime" required>
-      							<option selected>Choose End Time</option>
+      							<option disabled="disabled" selected="selected " type="hidden" value="Choose End Time">Choose End Time</option>
       							<option >9.00 am</option>
       							<option >10.00 am</option>
       							<option >11.00 am</option>
@@ -102,7 +101,7 @@
     					</div>
   					</div>
 				
-				<?php echo form_close(''); ?>
+				</form>
     		</div>
     	</div>
 		<div class="subSection" id="ss1">
