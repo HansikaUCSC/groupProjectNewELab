@@ -7,11 +7,10 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-
 <ul>
   <li><a class="active" href="<?php echo base_url() ?>/index.php/Home/logged ">Home</a></li>
   <li><a href="<?php echo base_url()?>/index.php/Upload/load_update">Update Details</a></li>
-  <li><a href="#">Security</a></li>
-  <li><a href="<?php echo base_url(); ?>/index.php/Upload/index">Change Image</a></li>
+  <li><a href="<?php echo base_url()?>/index.php/Upload/load_security">Security</a></li>
+  <li><a href="<?php echo base_url()?>/index.php/Upload/index">Change Image</a></li>
 </ul>
 <div  class="right">

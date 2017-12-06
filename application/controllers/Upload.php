@@ -5,11 +5,23 @@ class Upload extends CI_Controller {
         public function load_update(){
                 $this->load->view('profile');
         }
-       /* public function update(){
-               $this->load->model('Model_profile'),
-               $this->Model_profile->update_data($this->session->userdata('user _name')); 
-        }*/
+       public function update(){
+               $this->load->model('Model_profile');
+               $this->Model_profile->update_data($this->session->userdata('user_name')); 
+               $this->load->view('profile');
+        }
+        public function load_security(){
+                $this->load->view('security');
+        }
+        public function update_wpass(){
+            $this->load->model('Model_profile');
+            $this->Model_profile->update_wpass($this->session->userdata('user_name'));
+        }
 
+        public function update_Dpass(){
+            $this->load->model('Model_profile');
+            $this->Model_profile->update_dpass($this->session->userdata('user_name'));
+        }
  
         public function index()
         {
@@ -30,7 +42,6 @@ class Upload extends CI_Controller {
                 if ( ! $this->upload->do_upload('userfile'))
                 {
                         $error = array('error' => $this->upload->display_errors());
-                        echo "error";
                         $this->load->view('cimage', $error);
 
                 }
@@ -44,7 +55,7 @@ class Upload extends CI_Controller {
                         unset($data['submit']);
                         $this->load->model('Model_profile');
                        // $this->Model_profile->getid( $this->session->userdata('user_name'));
-                        $this->Model_profile->upload_image($arr, $this->session->userdata('user _name'));
+                        $this->Model_profile->upload_image($arr, $this->session->userdata('user_name'));
                 }
                 //$this->load->view('nheader');
                 $this->load->view('cimage');

@@ -23,9 +23,9 @@ class Model_user extends CI_Model
 		$password = sha1($this->input->post('password'));
 
 		// $query = "select * from user_reg where username='$username' and password='$password'";
-		$this->db->where('username',$username);
-		$this->db->where('password',$password);
-		$respond = $this->db->get('user_reg');
+		$this->db->where('fName',$username);
+		$this->db->where('passWeb',$password);
+		$respond = $this->db->get('reguser');
 
 		if ($respond->num_rows() == 1) {
 			return $respond->row(0);
