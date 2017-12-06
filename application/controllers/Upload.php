@@ -16,11 +16,13 @@ class Upload extends CI_Controller {
         public function update_wpass(){
             $this->load->model('Model_profile');
             $this->Model_profile->update_wpass($this->session->userdata('user_name'));
+            $this->load->view('security');
         }
 
         public function update_Dpass(){
             $this->load->model('Model_profile');
             $this->Model_profile->update_dpass($this->session->userdata('user_name'));
+            $this->load->view('security');
         }
  
         public function index()

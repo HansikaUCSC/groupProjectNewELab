@@ -16,11 +16,11 @@ class Model_profile extends CI_Model
 	public function update_wpass($fname){
 		$wpass=$this->input->post('wpass');
 		$sql = "UPDATE reguser SET passWeb='$wpass'  WHERE fName='$fname'";
-		//$this->db->query($sql);
+		$this->db->query($sql);
 		
 	}
 	public function update_Dpass($fname){
-		$dpass=$this->input->post('Dpass');
+		$dpass=$this->input->post('DPass');
 		$sql = "UPDATE reguser SET passDevice='$dpass'  WHERE fName='$fname'";
 		$this->db->query($sql);
 	}
