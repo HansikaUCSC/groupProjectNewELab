@@ -27,4 +27,10 @@ class Calendar extends CI_Controller
 
     }
 
+    public function check_timeslot{
+        $this->load->model('Model_user');
+        $data=$this->Model_user->selectTimeSlot();
+        var_dump($data)
+    }
+
 }
