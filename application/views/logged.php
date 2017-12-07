@@ -44,7 +44,8 @@
   					<div class="form-group">
     					<label class="control-label col-sm-2" for="time">Start Time:</label>
     					<div class="col-sm-10"> 
-      						<select class="form-control" id="#" name="starttime">
+    					<input type="Time" name="time">
+      						<!--  <select class="form-control" id="#" name="starttime">
       							<option selected="selected" type="hidden" disabled="disabled">Choose Start Time</option>
       							<option >8.00 am</option>
       							<option >9.00 am</option>
@@ -58,7 +59,7 @@
       							<option >5.00 pm</option>
       							<option >6.00 pm</option>
       							<option >7.00 pm</option>
-      						</select> 
+      						</select> --> 
     					</div>
   					</div>
   					

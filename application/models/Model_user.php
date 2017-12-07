@@ -50,6 +50,24 @@ class Model_user extends CI_Model
 		return $this->db->insert('schedule',$data);
 	}
 
+	function selectTimeSlot()
+	{
+		 $this->db->select('startTime,endTime')
+		 $query =$this->db->get('schedule');
+    		
+		$Date = $_POST['date'];
+		$STime = $_POST['starttime'];
+		$ETime = $_POST['endtime'];
+		//$Purpose = $_POST['optradio'];
+		//$Description = $_POST['comment'];
+		$sql="SELECT startTime,endTime WHERE = '$Date' ";
+		$this->db->query($sql);
+
+		/*if ($STime<$ETime) {
+				
+		}*/
+	}
+
 }
 
 ?>
