@@ -11,7 +11,7 @@ class Model_user extends CI_Model
 			'nic' => $this->input->post('nic','TRUE') ,
 			'contact' => $this->input->post('contact','TRUE') ,
 			'usertype' => $this->input->post('usertype','TRUE') ,
-			'password' => sha1($this->input->post('password','TRUE')) ,
+			'password' => ($this->input->post('password','TRUE')) ,
 			);
 		
 		return $this->db->insert('regUser',$data);
@@ -22,7 +22,7 @@ class Model_user extends CI_Model
 	function LoginUser()
 	{
 		$username = $this->input->post('username');
-		$password = sha1($this->input->post('password'));
+		$password = ($this->input->post('password'));
 
 		// $query = "select * from user_reg where username='$username' and password='$password'";
 		$this->db->where('fName',$username);
@@ -37,7 +37,7 @@ class Model_user extends CI_Model
 			return false;
 		}
 	}
-    function ReserveData()
+    function ReserveData($uid)
     {
         $data = array(
             'scheDate' => $this->input->post('date', 'TRUE'),
@@ -45,11 +45,24 @@ class Model_user extends CI_Model
             'endTime' => $this->input->post('endtime', 'TRUE'),
             'scheType' => $this->input->post('optradio', 'TRUE'),
             'scheDiscription' => $this->input->post('comment', 'TRUE'),
-            'user_id'=>$this->session->userdata('user_id')
+            'user_id'=>$uid
 
         );
 
         return $this->db->insert('schedule', $data);
+    }
+    public function selectTimeSlot(){
+    	$date = $this->input->post('date');
+    	$sTime = $this->input->post('starttime');
+    	$eTime = $this->input->post('endtime');
+    	//echo $date;
+    	$sql="SELECT startTime , endTime FROM schedule WHERE scheDate='$date' AND startTime>='$sTime' AND endTime<='$eTime'";
+    	//$sql="SELECT * FROM schedule";
+    	$result=$this->db->query($sql);
+   
+    
+        return $result->result_array();
+    	
     }
 }
 

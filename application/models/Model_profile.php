@@ -26,11 +26,10 @@ class Model_profile extends CI_Model
 	}
 
 	public function getid($username){
-		$this->db->select('user_id');
-		$this->db->where('userName', '$username');
-		$q = $this->db->get('user');
-		$data = $q->result_array();
+		$sql = "SELECT user_id FROM reguser  WHERE fName='$username'";
+		$data = $this->db->query($sql);
 		// above code segment used to get id where user name =$username
+		return $data->result_array();
 
 	}
 

@@ -12,25 +12,22 @@ class Calendar extends CI_Controller
         $this->load->view('tempCal');
     }
 
-    public function BkCalendar(){
 
-        $Date = $_POST['date'];
-        $STime = $_POST['starttime'];
-        $ETime = $_POST['endtime'];
-        $Purpose = $_POST['optradio'];
-        $Description = $_POST['comment'];
-
-        $this->load->model('Model_user');
-        $response = $this->Model_user->ReserveData();
-
-       // $this->session->userdata('user_id');
-
-    }
-
-    public function check_timeslot{
+    public function check_timeslot(){
         $this->load->model('Model_user');
         $data=$this->Model_user->selectTimeSlot();
-        var_dump($data)
+        //var_dump($data);
+        if($data==null){
+            $this->load->model('Model_profile');
+            $uname=$this->session->userdata('user_name');
+            $uid=$this->Model_profile->getid($uname);
+           $this->Model_user->ReserveData($uid[0]['user_id']);
+            
+        }
+        else{
+            $this->session->set_flashdata('errmsg','You entered time already taken');
+            redirect('Home/logged');
+        }
     }
 
 }

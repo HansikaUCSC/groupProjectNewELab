@@ -171,7 +171,7 @@
 
          <div class="col-lg-5" id="form" style="background-color: #e6ebff; float: right; margin-right: 50px;margin-top: 20px">
         <?php echo validation_errors(); ?>
-        <form method="POST" action="<?php echo base_url(); ?>index.php/calendar/BkCalendar" class="form-horizontal" style="margin-top: 10px">
+        <form method="POST" action="<?php echo base_url(); ?>index.php/calendar/check_timeslot" class="form-horizontal" style="margin-top: 10px">
             <div class="form-group">
                 <label class="control-label col-sm-2" for="date">Date:</label>
                 <div class="col-sm-10">
@@ -181,20 +181,20 @@
             <div class="form-group">
                 <label class="control-label col-sm-2" for="time">Start Time:</label>
                 <div class="col-sm-10">
-                    <select class="form-control" id="#" name="starttime">
+                    <select class="form-control" id="#" name="starttime" required>
                         <option selected type="hidden" disabled>Choose Start Time</option>
-                        <option >8.00 am</option>
-                        <option >9.00 am</option>
-                        <option >10.00 am</option>
-                        <option >11.00 am</option>
-                        <option >12.00 pm</option>
-                        <option >1.00 pm</option>
-                        <option >2.00 pm</option>
-                        <option >3.00 pm</option>
-                        <option >4.00 pm</option>
-                        <option >5.00 pm</option>
-                        <option >6.00 pm</option>
-                        <option >7.00 pm</option>
+                        <option >08</option>
+                        <option >09</option>
+                        <option >10</option>
+                        <option >11</option>
+                        <option >12</option>
+                        <option >13</option>
+                        <option >14</option>
+                        <option >15</option>
+                        <option >16</option>
+                        <option >17</option>
+                        <option >18</option>
+                        <option >19</option>
                     </select>
                 </div>
             </div>
@@ -202,19 +202,20 @@
             <div class="form-group">
                 <label class="control-label col-sm-2" for="time">End Time:</label>
                 <div class="col-sm-10">
-                    <select class="form-control" id="#" name="endtime">
-                        <option selected type="hidden" disabled >Choose End Time</option>
-                        <option >9.00 am</option>
-                        <option >10.00 am</option>
-                        <option >11.00 am</option>
-                        <option >12.00 pm</option>
-                        <option >1.00 pm</option>
-                        <option >2.00 pm</option>
-                        <option >3.00 pm</option>
-                        <option >4.00 pm</option>
-                        <option >5.00 pm</option>
-                        <option >6.00 pm</option>
-                        <option >7.00 pm</option>
+                   <select class="form-control" id="#" name="endtime" required>
+                        <option selected type="hidden" disabled>Choose Start Time</option>
+                        <option >08</option>
+                        <option >09</option>
+                        <option >10</option>
+                        <option >11</option>
+                        <option >12</option>
+                        <option >13</option>
+                        <option >14</option>
+                        <option >15</option>
+                        <option >16</option>
+                        <option >17</option>
+                        <option >18</option>
+                        <option >19</option>
                     </select>
                 </div>
             </div>
