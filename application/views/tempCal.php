@@ -171,6 +171,15 @@
 
          <div class="col-lg-5" id="form" style="background-color: #e6ebff; float: right; margin-right: 50px;margin-top: 20px">
         <?php echo validation_errors(); ?>
+        <?php 
+        if($this->session->flashdata('msg')==1){        
+            echo "<div class='alert alert-success'>successfully added</div>";
+        }
+        else{
+            echo "<div class='alert alert-warning'>Start Time must less than End Time</div>";
+        }
+        ?>
+        
         <form method="POST" action="<?php echo base_url(); ?>index.php/calendar/check_timeslot" class="form-horizontal" style="margin-top: 10px">
             <div class="form-group">
                 <label class="control-label col-sm-2" for="date">Date:</label>
@@ -219,6 +228,7 @@
                     </select>
                 </div>
             </div>
+
             <div class="form-group">
                 <label class="control-label col-sm-2">Purpose</label>
                 <div>
